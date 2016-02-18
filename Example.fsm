@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fsm:StateMachine xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:fsm="http://github.com/NMFCode/Examples/FiniteStateMachines" name="Order Process" startState="Receive Order">
+  <states name="Receive Order">
+    <outgoing input="order received" target="Check Stock"/>
+  </states>
+  <states name="Check Stock" incoming="//@states.0/@outgoing.0">
+    <outgoing input="item in stock" target="Check Customer"/>
+    <outgoing input="item not in stock" target="Order Cancelled"/>
+  </states>
+  <states name="Ship Order" incoming="//@states.3/@outgoing.0">
+    <outgoing input="order shipped" target="Send Invoice"/>
+  </states>
+  <states name="Check Customer" incoming="//@states.1/@outgoing.0">
+    <outgoing input="customer creditworthy" target="Ship Order"/>
+    <outgoing input="customer not creditworthy" target="Order Cancelled"/>
+  </states>
+  <states name="Send Invoice" incoming="//@states.2/@outgoing.0">
+    <outgoing input="invoice sent" target="Order Completed"/>
+  </states>
+  <states name="Order Completed" incoming="//@states.4/@outgoing.0" isAccepting="true"/>
+  <states name="Order Cancelled" incoming="//@states.1/@outgoing.1 //@states.3/@outgoing.1" isAccepting="true"/>
+</fsm:StateMachine>

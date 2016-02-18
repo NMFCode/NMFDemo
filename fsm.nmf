@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<nmeta:Namespace xmi:version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Uri="http://github.com/NMFCode/Examples/FiniteStateMachines" Prefix="fsm" Name="FSM" xmlns:xmi="http://www.omg.org/XMI" xmlns:nmeta="http://nmf.codeplex.com/nmeta/">
+  <Types xsi:type="nmeta:Class" Identifier="#//StateMachine/name/" Name="StateMachine">
+    <References IsContainment="True" ReferenceType="#//State/" IsOrdered="True" UpperBound="-1" Name="states" />
+    <References ReferenceType="#//State/" IsOrdered="True" LowerBound="1" Name="startState" />
+    <Attributes IsOrdered="True" LowerBound="1" Type="$5" Name="name" />
+  </Types>
+  <Types xsi:type="nmeta:Class" Identifier="#//State/name/" Name="State">
+    <References IsContainment="True" Opposite="#//Transition/source/" ReferenceType="#//Transition/" IsOrdered="True" UpperBound="-1" Name="outgoing" />
+    <References Opposite="#//Transition/target/" ReferenceType="#//Transition/" IsOrdered="True" UpperBound="-1" Name="incoming" />
+    <Attributes IsOrdered="True" LowerBound="1" Type="$5" Name="name" />
+    <Attributes IsOrdered="True" LowerBound="1" Type="$11" Name="isAccepting" />
+  </Types>
+  <Types xsi:type="nmeta:Class" Name="Transition">
+    <References Opposite="#//State/outgoing/" ReferenceType="#//State/" IsOrdered="True" LowerBound="1" Name="source" />
+    <References Opposite="#//State/incoming/" ReferenceType="#//State/" IsOrdered="True" Name="target" />
+    <Attributes IsOrdered="True" LowerBound="1" Type="$5" Name="input" />
+  </Types>
+</nmeta:Namespace>
