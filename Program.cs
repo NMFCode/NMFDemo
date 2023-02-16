@@ -66,7 +66,7 @@ namespace NMFDemo
             // As we switched on incremental analysis, the notifications created for our changes to the model have actually updated the analysis result
             // Thus, if you insert a breakpoint here, you should actually see a message printed to the console, though we have not actively rerun the analysis.
             // If we do not want to receive these updates anymore, there is also a Detach method available
-            incrementalStateHubs.Detach();
+            incrementalStateHubs.Successors.UnsetAll();
             #endregion
 
             #region Model transformation
